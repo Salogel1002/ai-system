@@ -1,0 +1,229 @@
+---
+title: "System Rebuild After Cost Failure"
+format: html
+---
+
+# Kontext
+
+Im vorherigen Systemaufbau wurde eine Architektur mit sehr umfangreichen, langen Skills (teilweise >400 Zeilen) kombiniert mit Heartbeat-Mechaniken eingesetzt.
+
+Dies führte innerhalb kurzer Zeit zu erheblichen Kosten (ca. 1000€), ohne proportionalen Mehrwert.
+
+Dieses Dokument hält die Ursachen, Fehler und verbindlichen Architekturprinzipien für den Neuaufbau fest.
+
+---
+
+# Problemdefinition
+
+## Beobachtetes Verhalten
+
+- Hohe Token-Kosten ohne klaren Nutzenanstieg
+- Häufige Reaktivierung großer Instruktionsblöcke
+- Wiederholtes Laden umfangreicher Skill-Definitionen
+- Heartbeats erzeugten kontinuierliche Aktivität ohne echten Bedarf
+
+## Ergebnis
+
+- Kostenexplosion
+- Intransparente Systemdynamik
+- fehlende Kontrolle über Ausführungsfrequenz und Kontextgröße
+
+---
+
+# Ursachenanalyse
+
+## 1. Überladene Skills (Monolithen)
+
+- Skills enthielten:
+  - Denklogik
+  - Stildefinition
+  - Prozesslogik
+  - Kontrollmechanismen
+  - Beispiele
+  - Meta-Anweisungen
+
+→ Folge: Jeder Aufruf war teuer
+
+---
+
+## 2. Fehlende Layer-Trennung
+
+Es gab keine klare Trennung zwischen:
+
+- Architektur
+- Ausführung
+- Memory
+- Orchestrierung
+
+→ Folge: Alles wurde im Prompt/Skill abgebildet
+
+---
+
+## 3. Heartbeats ohne ökonomische Kontrolle
+
+- wiederholte Ausführung ohne klaren Trigger
+- keine Kosten-Nutzen-Prüfung
+- kein Budget-Limit
+
+→ Folge: permanente Token-Verbrennung
+
+---
+
+## 4. Fehlendes Memory-System
+
+- Kontext musste ständig neu erzeugt werden
+- keine gezielte Persistenz relevanter Informationen
+
+→ Folge: redundante Berechnung
+
+---
+
+## 5. Keine Cost-Governance
+
+- keine Limits
+- kein Monitoring
+- keine Abbruchlogik
+
+---
+
+# Grundsatzentscheidung
+
+Der Neuaufbau erfolgt **nicht als Optimierung des alten Systems**, sondern als:
+
+> **Neues, modular aufgebautes, kostenkontrolliertes System**
+
+---
+
+# Architekturprinzipien (verbindlich)
+
+## 1. Thin Skills Only
+
+- Skills sind:
+  - kurz
+  - präzise
+  - auf eine Aufgabe begrenzt
+
+- Skills enthalten NICHT:
+  - umfangreiche Beispiele
+  - allgemeine Denkmodelle
+  - Systemarchitektur
+
+---
+
+## 2. Klare Layer-Trennung
+
+Das System besteht aus getrennten Ebenen:
+
+### Dokumentation (.qmd)
+- Architektur
+- Policies
+- Standards
+- Entscheidungen
+
+### Runtime (Code)
+- Ausführung
+- API
+- Worker
+
+### Memory (mem0)
+- strukturierte, selektive Speicherung
+
+### Storage (Qdrant)
+- persistente Vektor-Datenbank
+
+### Orchestrierung (optional später: Paperclip)
+- Steuerung
+- Budgetierung
+- Governance
+
+---
+
+## 3. Memory ist selektiv
+
+Es wird NICHT alles gespeichert.
+
+Zulässige Kategorien:
+
+- identity
+- preferences
+- projects
+- decisions
+
+Nicht zulässig:
+
+- komplette Chatverläufe
+- irrelevante Details
+- temporäre Gedanken
+
+---
+
+## 4. Retrieval ist restriktiv
+
+- kein automatisches Retrieval
+- nur bei klarem Bedarf
+- limitierte Kontextgröße
+
+---
+
+## 5. Write-Back ist restriktiv
+
+Memory wird nur geschrieben, wenn:
+
+- Information langfristig relevant ist
+- Wiederverwendung wahrscheinlich ist
+- klare Kategorie zuweisbar ist
+
+---
+
+## 6. Heartbeats sind verboten (v1)
+
+- keine kontinuierlichen Schleifen
+- keine Selbsttrigger ohne Bedarf
+
+Ausnahme (später):
+- nur mit Budget + klarer Funktion
+
+---
+
+## 7. GitHub ist Source of Truth
+
+GitHub enthält:
+
+- Architektur
+- Code
+- Prompts
+- Skills
+- Policies
+
+Nicht enthalten:
+
+- Runtime-Daten
+- Memory-Daten
+- Secrets
+
+---
+
+## 8. Kosten sind ein Designparameter
+
+Jede Architekturentscheidung muss beantworten:
+
+- Wie oft wird etwas geladen?
+- Wie viele Tokens kostet es?
+- Ist der Nutzen höher als die Kosten?
+
+---
+
+# Zielarchitektur (v1)
+
+```text
+User Request
+    ↓
+API / Worker
+    ↓
+(Conditional) Retrieval via mem0
+    ↓
+Qdrant Cloud
+    ↓
+Task Execution (Thin Skill)
+    ↓
+(Conditional) Memory Write
