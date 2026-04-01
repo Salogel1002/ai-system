@@ -1,0 +1,81 @@
+---
+title: "Cost Control"
+format: html
+---
+
+# Ziel
+
+Kostenkontrolle ist kein nachgelagerter Bericht, sondern ein Architekturprinzip.
+
+---
+
+# Grundregel
+
+> Jede Ausführung muss wirtschaftlich begründbar sein.
+
+---
+
+# Kostenquellen
+
+## 1. Große Instruktionsblöcke
+- lange Skills
+- überladene Prompts
+- unnötige Beispiele im aktiven Kontext
+
+## 2. Unnötiges Retrieval
+- Memory laden ohne klaren Bedarf
+- zu viele Einträge pro Request
+- Full-Context-Injection
+
+## 3. Unnötige Speicherungen
+- jede Interaktion wird gespeichert
+- keine Relevanzprüfung vor Write-Back
+
+## 4. Daueraktivität
+- Heartbeats
+- Polling
+- selbstgetriggerte Prozesse ohne klaren Nutzen
+
+---
+
+# Verbindliche Regeln
+
+## 1. Thin Skills Only
+Skills bleiben kurz und aufgabenspezifisch.
+
+## 2. Retrieval nur bei Bedarf
+Memory wird nur geladen, wenn es die Antwortqualität wahrscheinlich erhöht.
+
+## 3. Write-Back nur bei langfristigem Nutzen
+Es wird nur gespeichert, was wiederverwendbar und relevant ist.
+
+## 4. Keine Heartbeats in v1
+Es gibt keine permanent laufenden Hintergrundschleifen.
+
+## 5. Kontext ist begrenzt
+Jeder Request darf nur einen kleinen, gezielten Arbeitskontext erhalten.
+
+---
+
+# Prüffragen vor jeder Erweiterung
+
+- Wie oft wird diese Logik aktiviert?
+- Was kostet sie pro Ausführung?
+- Ist der Nutzen höher als die Kosten?
+- Kann diese Information ausgelagert werden?
+- Muss das wirklich immer im Kontext liegen?
+
+---
+
+# Verboten
+
+- Mega-Skills
+- automatische Vollspeicherung
+- unkontrollierte Orchestrierung
+- Dauerprozesse ohne Budgetgrenze
+
+---
+
+# Ziel
+
+Maximale Wirksamkeit bei minimalem laufendem Ressourcenverbrauch
