@@ -1,0 +1,60 @@
+---
+title: "ADR 0001 - Use Qdrant Cloud"
+format: html
+---
+
+# Status
+
+Accepted
+
+---
+
+# Kontext
+
+Das System benötigt eine persistente semantische Speicherlösung für Memory-Retrieval und selektiven Write-Back.
+
+Die Lösung muss:
+- extern betrieben werden
+- skalierbar sein
+- API-basiert ansprechbar sein
+- zum geplanten Memory-Layer mit mem0 passen
+
+---
+
+# Entscheidung
+
+Qdrant Cloud wird als primärer Vector Store verwendet.
+
+---
+
+# Begründung
+
+Qdrant Cloud erfüllt die Anforderungen an:
+
+- persistente Vektorspeicherung
+- semantische Suche
+- API-Zugriff
+- gemanagten Betrieb
+- Trennung von Code und Laufzeitdaten
+
+Zusätzlich passt Qdrant Cloud zur geplanten Integration mit mem0.
+
+---
+
+# Konsequenzen
+
+## Vorteile
+- kein Eigenbetrieb der Vektordatenbank
+- saubere Trennung von GitHub und Laufzeitdaten
+- gute Grundlage für skalierbares Retrieval
+
+## Nachteile
+- externer Dienst
+- zusätzliche Infrastrukturkomponente
+- laufende Betriebskosten
+
+---
+
+# Verbindliche Regel
+
+Produktive Memory-Daten werden nicht in GitHub gespeichert, sondern in Qdrant Cloud.
