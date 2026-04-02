@@ -1,6 +1,6 @@
 # Runtime
 
-`runtime/` enthält die Laufzeitlogik des Orchestrators. Hier wird ein einzelner Run aufgebaut, durch die definierten Schritte geführt und mit Status, Grenzen und Ergebnissen versehen.
+enthält die Laufzeitlogik des Orchestrators. Hier wird ein einzelner Run aufgebaut, durch die definierten Schritte geführt und mit Status, Grenzen und Ergebnissen versehen.
 
 ## Zweck
 
