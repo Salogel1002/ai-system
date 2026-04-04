@@ -1,6 +1,6 @@
 import { runOrchestrator } from "./runtime/runOrchestrator";
 
-const response = runOrchestrator({
+const response = await runOrchestrator({
   input: "Summarize this proposal and identify the main risks.",
 });
 
