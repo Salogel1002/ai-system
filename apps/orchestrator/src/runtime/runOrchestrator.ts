@@ -3,6 +3,7 @@ import { buildPrompt } from "../prompts/buildPrompt";
 import { writeTrace } from "../tracing/writeTrace";
 import type { ResponseObject } from "../types/responseObject";
 import { buildRunContext } from "./buildRunContext";
+import { executeModel } from "./executeModel";
 
 type RunOrchestratorInput = {
   input: string;
@@ -11,17 +12,12 @@ type RunOrchestratorInput = {
   tenant_id?: string | null;
 };
 
-function executeModel(prompt: string): string {
-  // MVP-Mock: später durch echten Modellaufruf ersetzen
-  return `Mock response for prompt:\n${prompt}`;
-}
-
-export function runOrchestrator({
+export async function runOrchestrator({
   input,
   session_id,
   user_id,
   tenant_id,
-}: RunOrchestratorInput): ResponseObject {
+}: RunOrchestratorInput): Promise<ResponseObject> {
   const context = buildRunContext({
     input,
     session_id,
@@ -30,7 +26,7 @@ export function runOrchestrator({
   });
 
   const prompt = buildPrompt(context);
-  const output = executeModel(prompt);
+  const output = await executeModel(prompt);
   const decision = evaluateResult(output);
   const trace_id = writeTrace(context, decision);
 
