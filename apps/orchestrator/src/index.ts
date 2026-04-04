@@ -1,4 +1,4 @@
-import { runOrchestrator } from "./runtime/runOrchestrator";
+import { runOrchestrator } from "./runtime/runOrchestrator.js";
 
 const response = await runOrchestrator({
   input: "Summarize this proposal and identify the main risks.",
