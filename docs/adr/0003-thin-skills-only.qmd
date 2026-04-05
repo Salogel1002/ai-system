@@ -1,0 +1,58 @@
+---
+title: "ADR 0003 - Thin Skills Only"
+format: html
+---
+
+# Status
+
+Accepted
+
+---
+
+# Kontext
+
+Im vorherigen Systemaufbau führten lange, überladene Skills in Kombination mit Heartbeats und häufiger Reaktivierung zu unnötig hohen Kosten.
+
+Die Ursache war nicht nur die Menge an Instruktionen, sondern auch die Vermischung mehrerer Rollen in einem Skill:
+- Architektur
+- Stil
+- Prozesslogik
+- Kontrolllogik
+- Beispiele
+- Sonderfälle
+
+---
+
+# Entscheidung
+
+Skills werden im System nur noch als kurze, klar abgegrenzte, aufgabenspezifische Einheiten gebaut.
+
+---
+
+# Begründung
+
+Thin Skills sind günstiger, klarer und stabiler, weil sie:
+
+- weniger Kontext verbrauchen
+- seltener unnötig triggern
+- einfacher testbar sind
+- besser mit Dokumentation, Memory und Runtime getrennt werden können
+
+---
+
+# Konsequenzen
+
+## Vorteile
+- geringere laufende Kosten
+- bessere Wartbarkeit
+- klarere Zuständigkeiten
+
+## Nachteile
+- mehr Strukturdisziplin erforderlich
+- stärkere Abhängigkeit von sauberer Dokumentation außerhalb der Skills
+
+---
+
+# Verbindliche Regel
+
+Skills enthalten keine Systemarchitektur, keine umfassenden Beispiele und keine dauerhafte Meta-Steuerlogik.

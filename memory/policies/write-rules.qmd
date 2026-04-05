@@ -1,0 +1,61 @@
+---
+title: "Write Rules"
+format: html
+---
+
+# Ziel
+
+Dieses Dokument definiert, wann Informationen in das Memory geschrieben werden dürfen.
+
+---
+
+# Grundregel
+
+> Write-Back ist selektiv und niemals automatisch für jede Interaktion.
+
+---
+
+# Zulässige Speichergründe
+
+Ein Eintrag darf nur gespeichert werden, wenn mindestens einer der folgenden Gründe erfüllt ist:
+
+## 1. Langfristige Relevanz
+Die Information wird voraussichtlich in späteren Interaktionen wieder nützlich.
+
+## 2. Wiederverwendbarkeit
+Die Information kann zukünftige Antworten verbessern oder beschleunigen.
+
+## 3. Explizite Entscheidung
+Es wurde eine klare Entscheidung getroffen, die später erneut relevant ist.
+
+## 4. Stabile Präferenz
+Es handelt sich um eine wiederkehrende Präferenz oder feste Arbeitsweise.
+
+---
+
+# Nicht speichern
+
+Nicht gespeichert werden:
+
+- komplette Antworten
+- komplette Chats
+- spontane Zwischenideen
+- temporäre Details
+- Informationen ohne klare Kategorie
+
+---
+
+# Pflichtprüfung vor jedem Write
+
+Vor jedem Write-Back muss geprüft werden:
+
+- Ist die Information langfristig relevant?
+- Ist sie wiederverwendbar?
+- Ist sie eindeutig einer Kategorie zuordenbar?
+- Würde ihr Fehlen später einen echten Nachteil erzeugen?
+
+---
+
+# Verbindliche Regel
+
+Wenn eine Information nicht klar begründbar gespeichert werden kann, wird sie nicht gespeichert.

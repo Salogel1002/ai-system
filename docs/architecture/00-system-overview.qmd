@@ -1,0 +1,87 @@
+---
+title: "System Overview"
+format: html
+---
+
+# Ziel
+
+Dieses System dient dem Aufbau einer modularen, skalierbaren und kostenkontrollierten AI-Architektur.
+
+Der Fokus liegt auf:
+- klarer Trennung von Verantwortlichkeiten
+- minimalem Kontextverbrauch
+- gezielter Nutzung von Memory
+- kontrollierter Ausführung
+
+---
+
+# Systemkomponenten
+
+## 1. GitHub (Source of Truth)
+
+Enthält:
+- Architektur (.qmd)
+- Prompts / Skills
+- Code
+- Policies
+- Entscheidungen (ADR)
+
+GitHub ist die zentrale Steuerinstanz für Definition und Struktur.
+
+---
+
+## 2. Runtime (API / Worker)
+
+Verantwortlich für:
+- Ausführung von Requests
+- Steuerung von Workflows
+- Integration von Memory
+
+---
+
+## 3. Skills
+
+- kleine, spezialisierte Einheiten
+- klar definierter Input/Output
+- keine Systemlogik
+
+---
+
+## 4. Memory Layer (mem0)
+
+- extrahiert relevante Informationen
+- entscheidet, was gespeichert wird
+- stellt Kontext bei Bedarf bereit
+
+---
+
+## 5. Vector Store (Qdrant Cloud)
+
+- persistente Speicherung von Memory
+- semantische Suche
+- strukturierte Collections
+
+---
+
+## 6. Orchestrierung (optional: Paperclip)
+
+- Steuerung von Agenten
+- Budgetkontrolle
+- Workflow-Management
+
+Wird erst nach stabiler Basis integriert.
+
+---
+
+# Datenfluss (vereinfacht)
+
+```text
+User Request
+    ↓
+API / Worker
+    ↓
+(Conditional) Memory Retrieval
+    ↓
+Task Execution (Skill)
+    ↓
+(Conditional) Memory Write

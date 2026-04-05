@@ -1,0 +1,75 @@
+---
+title: "Memory Policy"
+format: html
+---
+
+# Ziel
+
+Kontrollierte und sinnvolle Nutzung von Memory.
+
+---
+
+# Grundregel
+
+> Memory ist selektiv, nicht vollständig.
+
+---
+
+# Erlaubte Kategorien
+
+## 1. Identity
+- stabile Fakten über Nutzer / Organisation
+
+## 2. Preferences
+- Arbeitsweise
+- Stil
+- Formate
+
+## 3. Projects
+- laufende Vorhaben
+- Ziele
+- Rahmenbedingungen
+
+## 4. Decisions
+- explizite Entscheidungen
+
+---
+
+# Nicht erlaubt
+
+- komplette Chatverläufe
+- irrelevante Details
+- temporäre Gedanken
+- redundante Informationen
+
+---
+
+# Write-Regeln
+
+Memory wird nur gespeichert, wenn:
+
+- langfristige Relevanz besteht
+- Wiederverwendung wahrscheinlich ist
+- klare Kategorie vorhanden ist
+
+---
+
+# Retrieval-Regeln
+
+Memory wird nur geladen, wenn:
+
+- es die Qualität der Antwort verbessert
+- die Anfrage kontextabhängig ist
+
+---
+
+# Limits
+
+- begrenzte Anzahl an Memory-Einträgen pro Request
+- keine Full-Context-Injection
+
+---
+
+# Ziel
+
+Maximaler Nutzen bei minimalem Kontextverbrauch
