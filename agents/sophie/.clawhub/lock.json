@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "skills": {
+    "cold-email-writer": {
+      "version": "1.0.0",
+      "installedAt": 1773424681561
+    },
+    "linkedin-writer": {
+      "version": "1.0.0",
+      "installedAt": 1773424685794
+    },
+    "ai-humanizer": {
+      "version": "2.1.0",
+      "installedAt": 1773430263889
+    },
+    "proactive-agent-lite": {
+      "version": "1.0.0",
+      "installedAt": 1774632791432
+    }
+  }
+}
