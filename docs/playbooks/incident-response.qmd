@@ -1,0 +1,84 @@
+---
+title: "Incident Response"
+format: html
+---
+
+# Ziel
+
+Dieses Playbook beschreibt, wie auf Kostenfehler, fehlerhafte Trigger, falsche Speicherlogik oder unerwartete Systemdynamik reagiert wird.
+
+---
+
+# Auslöser
+
+Dieses Playbook wird genutzt, wenn mindestens eines der folgenden Symptome auftritt:
+
+- plötzlicher Kostenanstieg
+- unerwartet häufige Aktivierung von Skills oder Retrieval
+- falsche oder übermäßige Memory-Speicherung
+- unklare Runtime-Dynamik
+- schwer nachvollziehbares Systemverhalten
+
+---
+
+# Sofortmaßnahmen
+
+## 1. Stoppen
+- keine neuen Erweiterungen einbauen
+- keine zusätzlichen Trigger aktivieren
+- keine Heartbeats einschalten
+
+## 2. Isolieren
+- betroffene Komponente identifizieren
+- prüfen: Skill, Runtime, Memory oder Orchestrierung
+
+## 3. Sichtbar machen
+- welche Ausführung ist wie oft gelaufen?
+- welche Komponente wurde aktiv?
+- welche Speicherungen wurden ausgelöst?
+
+---
+
+# Diagnose
+
+## Prüffragen
+
+- Wurde unnötiges Retrieval ausgelöst?
+- Wurde zu viel gespeichert?
+- Hat ein Skill zu breit getriggert?
+- Wurde zu viel Kontext geladen?
+- Gibt es eine Vermischung von Zuständigkeiten?
+
+---
+
+# Gegenmaßnahmen
+
+## Bei Skill-Problemen
+- Trigger verengen
+- Skill kürzen
+- Beispiele auslagern
+
+## Bei Memory-Problemen
+- Write-Regeln verschärfen
+- irrelevante Kategorien sperren
+- Retrieval begrenzen
+
+## Bei Runtime-Problemen
+- Default-Kontext verkleinern
+- unnötige Tool-Nutzung entfernen
+- Ablauf vereinfachen
+
+---
+
+# Verbindliche Regel
+
+> Bei Instabilität wird zuerst reduziert, nicht erweitert.
+
+---
+
+# Zielbild
+
+Ein Vorfall gilt erst dann als gelöst, wenn:
+- Ursache identifiziert ist
+- Gegenmaßnahme dokumentiert ist
+- Wiederholungsrisiko reduziert wurde

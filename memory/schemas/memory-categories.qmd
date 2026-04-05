@@ -1,0 +1,82 @@
+---
+title: "Memory Categories"
+format: html
+---
+
+# Ziel
+
+Dieses Dokument definiert die zulässigen Memory-Kategorien im System.
+
+---
+
+# Grundregel
+
+> Es werden nur Informationen gespeichert, die langfristig relevant und wiederverwendbar sind.
+
+---
+
+# Kategorien
+
+## 1. Identity
+
+Stabile Fakten über Nutzer, Organisation oder Rollen.
+
+### Beispiele
+- Name
+- Rolle
+- Organisationszugehörigkeit
+- feste Zuständigkeiten
+
+---
+
+## 2. Preferences
+
+Wiederkehrende Präferenzen in Arbeitsweise, Stil oder Form.
+
+### Beispiele
+- gewünschte Antworttiefe
+- bevorzugte Struktur
+- Sprachpräferenzen
+- Arbeitsmodus
+
+---
+
+## 3. Projects
+
+Laufende Vorhaben mit mittelfristiger Relevanz.
+
+### Beispiele
+- aktuelles AI-System
+- eingesetzte Tools
+- definierte Zielarchitektur
+- laufende Umsetzungspläne
+
+---
+
+## 4. Decisions
+
+Explizit getroffene Entscheidungen, die später erneut relevant werden.
+
+### Beispiele
+- Qdrant Cloud wird genutzt
+- mem0 wird genutzt
+- thin skills only
+- Paperclip erst nach stabiler v1
+
+---
+
+# Nicht zulässig
+
+Nicht in Memory gespeichert werden:
+
+- komplette Chatverläufe
+- flüchtige Zwischenüberlegungen
+- irrelevante Nebenbemerkungen
+- redundante Wiederholungen
+- alles, was nur einmalig gebraucht wird
+
+---
+
+# Verbindliche Regel
+
+Jeder Memory-Eintrag muss genau einer Kategorie zuordenbar sein.
