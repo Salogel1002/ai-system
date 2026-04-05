@@ -1,0 +1,75 @@
+---
+title: "Runtime Patterns"
+format: html
+---
+
+# Ziel
+
+Die Runtime steuert, wann welche Komponente aktiv wird und wie Requests wirtschaftlich verarbeitet werden.
+
+---
+
+# Grundprinzip
+
+> Die Runtime lädt nur die kleinste notwendige Menge an Kontext und Logik.
+
+---
+
+# Standardablauf eines Requests
+
+## 1. Eingang
+Ein Request trifft im System ein.
+
+## 2. Vorprüfung
+Die Runtime prüft:
+- Ist die Anfrage einfach genug ohne Retrieval?
+- Wird wirklich Memory benötigt?
+- Wird ein Skill benötigt?
+
+## 3. Optionale Memory-Abfrage
+Nur wenn kontextrelevante Informationen wahrscheinlich hilfreich sind, wird Memory abgefragt.
+
+## 4. Task-Ausführung
+Die Anfrage wird mit minimalem Arbeitskontext bearbeitet.
+
+## 5. Nachprüfung
+Nach der Antwort wird geprüft:
+- Gab es neue, langfristig relevante Information?
+- Falls ja: selektiver Write-Back
+- Falls nein: nichts speichern
+
+---
+
+# Betriebsmodi
+
+## Direktmodus
+- kein Retrieval
+- kein Write-Back
+- einfache Bearbeitung
+
+## Retrieval-Modus
+- selektives Laden weniger Memory-Einträge
+- keine Vollinjektion
+
+## Write-Back-Modus
+- nur nach expliziter Relevanzprüfung
+
+---
+
+# Fehlervermeidung
+
+## Nicht erlaubt
+- automatisches Retrieval bei jeder Anfrage
+- automatisches Speichern jeder Antwort
+- unnötige Tool-Aktivierung
+- große Standardkontexte
+
+---
+
+# Zielbild
+
+Eine Runtime ist gut, wenn sie:
+- billig bleibt
+- stabil bleibt
+- nachvollziehbar bleibt
+- nur bei echtem Bedarf zusätzliche Komplexität aktiviert

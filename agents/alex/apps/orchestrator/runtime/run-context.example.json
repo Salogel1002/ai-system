@@ -1,0 +1,50 @@
+{
+  "run_id": "run_0001",
+  "request": {
+    "input": "Summarize this proposal and identify the main risks.",
+    "task_type": "review"
+  },
+  "session": {
+    "session_id": "session_0001",
+    "user_id": "user_0001"
+  },
+  "tenant": {
+    "tenant_id": "tenant_0001"
+  },
+  "role": {
+    "active_role": "reviewer"
+  },
+  "prompts": {
+    "system_prompt_id": "base-system-prompt",
+    "task_prompt_id": "default-task-prompt",
+    "evaluator_prompt_id": "default-evaluator"
+  },
+  "skills": {
+    "allowed_skills": ["review"]
+  },
+  "memory": {
+    "read_allowed": false,
+    "write_allowed": false,
+    "categories": []
+  },
+  "budget": {
+    "token_budget": 4000,
+    "cost_budget": null,
+    "time_budget": null,
+    "remaining_tokens": 4000
+  },
+  "execution": {
+    "run_type": "USER_TRIGGERED",
+    "max_rebuilds": 0,
+    "current_rebuild_count": 0
+  },
+  "state": {
+    "current_state": "CONTEXT_BUILT"
+  },
+  "evaluation": {
+    "status": null
+  },
+  "trace": {
+    "trace_id": "trace_0001"
+  }
+}
